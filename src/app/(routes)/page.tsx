@@ -3,12 +3,12 @@ import getProducts from "@/actions/get-products";
 import ProductList from "@/components/product-list";
 import Billboard from "@/components/ui/billboard";
 import Container from "@/components/ui/container";
-
+  
 export const revalidate = 0;
-
+const storeID = process.env.NEXT_PUBLIC_API_URL!.split('/').pop();
 const HomePage = async () => {
   const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard("074769bc-2891-4758-8aef-596692be4cb9");
+  const billboard = await getBillboard(storeID!);
 
   return (
     <Container>
